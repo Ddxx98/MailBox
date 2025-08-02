@@ -2,6 +2,7 @@ import './App.css'
 import LogIn from './components/LogIn/LogIn'
 import SignUp from './components/SignUp/SignUp'
 import Header from './components/Header/Header'
+import MailEditor from './components/MailEditor/MailEditor'
 import { Routes, Route } from 'react-router-dom'
 
 function App() {
@@ -11,7 +12,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<SignUp />} />
-        <Route path="login" element={<LogIn />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/editor" element={<MailEditor />} />
       </Routes>
     </div>
   )

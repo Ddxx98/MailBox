@@ -10,10 +10,11 @@ import {
   Alert,
   Spinner,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const LogIn = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({ email: "", password: "" });
   const [touched, setTouched] = useState({ email: false, password: false });
   const [error, setError] = useState("");
@@ -45,6 +46,7 @@ const LogIn = () => {
       setForm({ email: "", password: "" });
       setTouched({ email: false, password: false });
       localStorage.setItem("token", res.data.token);
+      navigate("/editor");
     } catch (err) {
       setError(
         err.response?.data?.message ||
