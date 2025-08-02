@@ -6,9 +6,10 @@ import dotenv from "dotenv";
 // Route imports (use .js extensions!)
 // import userRoute from "./routes/user.js";
 // import productRoute from "./routes/product.js";
+import signupRoute from "./routes/signup.js";
+import loginRoute from "./routes/login.js";
 
 dotenv.config();
-
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -23,6 +24,8 @@ app.get("/", (req, res) => {
 // API routes
 // app.use("/api/users", userRoute);
 // app.use("/api/products", productRoute);
+app.use("/api", signupRoute);
+app.use("/api", loginRoute);
 
 // Generic error handler — always after all routes
 app.use((err, req, res, next) => {
