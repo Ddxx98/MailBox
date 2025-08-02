@@ -10,10 +10,11 @@ import {
   Alert,
   Spinner,
 } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const SignUp = () => {
+  const navigate = useNavigate();
   const [form, setForm] = useState({
     email: "",
     password: "",
@@ -46,13 +47,14 @@ const SignUp = () => {
 
     try {
       // Replace URL with your actual backend endpoint!
-      const res = await axios.post("http://localhost:5000/api/signup", {
+      const res = await axios.post("http://localhost:3000/api/signup", {
         email: form.email,
         password: form.password,
       });
       setSuccess("Signup successful!");
       setForm({ email: "", password: "", confirmPassword: "" });
       setTouched({ email: false, password: false, confirmPassword: false });
+      navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Signup failed. Please try again.");
     } finally {
@@ -63,8 +65,6 @@ const SignUp = () => {
   return (
     <div
       style={{
-        // minHeight: "100vh",
-        
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
